@@ -13,6 +13,21 @@ function MemeForm(props) {
     const [ image, setImage ] = useState("")
     const imageRef = useRef(null)
 
+    useEffect(() => {
+        if (props.id && props.editMode) {
+            fetch(`https://gdf-meme-api.herokuapp.com/meme/${props.id}`)
+            .then(res => res.json())
+            .then(data => {
+                setText(data.text)
+                setFavorite(data.favorite)
+            })
+            .catch(err => {
+                console.log("load meme data error:", err)
+            })
+        }
+    }, [])
+
+
     const componentConfig = () => {
         return {
             iconFiletypes: [".jpg", ".png"],
@@ -50,7 +65,24 @@ function MemeForm(props) {
     const handleSubmit = e => {
         e.preventDefault()
         if (props.editMode) {
-            console.log("editMode enabled")
+            fetch(`https://gdf-meme-api.herokuapp.com/meme/${props.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: JSON.stringify({
+                    text,
+                    favorite
+                })
+            })
+            .then(() => {
+                setText("")
+                setFavorite(false)
+                imageRef.current.dropzone.removeAllFiles()
+                navigate("/")
+            })
+            .catch(err => console.log("PUT error: ", err))
         } else {
             axios
             .post("https://gdf-meme-api.herokuapp.com/add-meme", {
@@ -66,6 +98,7 @@ function MemeForm(props) {
             })
             .then(() => {
                 console.log("added")
+                navigate("/")
             })
             .catch(err => {
                 console.log("New Meme Submit Error: ", err)
@@ -80,7 +113,7 @@ function MemeForm(props) {
             :
             <h1>Add a Meme</h1>
             }
-            <form>
+            <form onSubmit={handleSubmit}>
                 <DropzoneComponent
                 ref={imageRef}
                 config={componentConfig()}

@@ -13,7 +13,7 @@ function Meme(props) {
             <div className="meme-interface">
                 {favorite ? <img className="favorite" style={{height: "40px", width: "40px"}} src={favoriteStar} alt="Favorite star missing"/> : null}
                 <button className="btn" onClick={() => props.deleteMeme(id)}>Delete</button>
-                <button className="btn">Edit</button>
+                <button className="btn" onClick={() => props.editMeme(id)}>Edit</button>
             </div>
             
         </div>
