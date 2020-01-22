@@ -3,6 +3,7 @@
 @import "./navigation.scss";
 @import "./meme.scss";
 @import "./meme-form.scss";
+@import "./media-query.scss";
 
 body {
     margin: 0px;
@@ -20,4 +21,8 @@ body {
 .spacer {
     height: 6vh;
     width: 100%;
+}
+
+.meme-space {
+    width: 100vw;
 }

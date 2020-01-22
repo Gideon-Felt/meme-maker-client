@@ -115,36 +115,54 @@ function MemeForm(props) {
 
     return (
         <div>
-            {props.editMode ?
-            <h1 className="form-mode"> Edit Meme</h1>
-            :
-            <h1 className="form-mode">Add a Meme</h1>
-            }
-            <form onSubmit={handleSubmit}>
+            <div className="form-mode-wrapper">
+                {props.editMode ?
+                <h1 className="form-mode"> Edit Meme</h1>
+                :
+                <h1 className="form-mode">Add a Meme</h1>
+                }
+            </div>
+            <form onSubmit={handleSubmit} className="form-body">
                 <div className="drop-component">
-                <DropzoneComponent
-                ref={imageRef}
-                config={componentConfig()}
-                djsConfig={djsConfig()}
-                eventHandlers={handleDrop()}
-                >
-                    Drop Yo' Meme Cuzzn
-                </DropzoneComponent>
+                    <DropzoneComponent
+                    ref={imageRef}
+                    config={componentConfig()}
+                    djsConfig={djsConfig()}
+                    eventHandlers={handleDrop()}
+                    >
+                        <p className="dropzone-message">Drop Yo' Meme</p>
+                    </DropzoneComponent>
                 </div>
-                <input
-                className="select-element"
-                type="text"
-                placeholder="Caption"
-                value={text}
-                onChange={e => setText(e.target.value)}
-                />
-                <div className="star-space">
-                    <div  onClick={() => handleFavoriteClick()}>
-                        {favorite ? <img className="favorite" style={{height: "25px", width: "25px"}} src={favoriteStar} alt="Favorite star missing"/> : <img className="favorite" style={{height: "25px", width: "25px"}} src={blackStar} alt="Favorite star missing"/>}
+                <div className="caption-input">
+                    <input
+                        className="input-element"
+                        type="text"
+                        placeholder="Caption"
+                        value={text}
+                        onChange={e => setText(e.target.value)}
+                    />
+                </div>
+                
+                <div className="user-input-space">
+                    <div className="inputs">
+
+                        <div className="star-space">
+
+                            <div onClick={() => handleFavoriteClick()}>
+                                {favorite ? <img className="favorite-star" style={{height: "28px", width: "28px"}} src={favoriteStar} alt="Favorite star missing"/> : <img className="favorite-star" style={{height: "28px", width: "28px"}} src={blackStar} alt="Favorite star missing"/>}
+                            </div>
+
+                            <div className="spacer1"/>
+
+                            <span className="favorite">Favorite?</span>
+
+                        </div>
+
+                        <button className="submit-btn" type="submit">save meme</button>
+                        
                     </div>
-                    <span className="favorite">Favorite?</span>
+                    
                 </div>
-                <button className="submit-btn" type="submit">save meme</button>
             </form>
 
         </div>

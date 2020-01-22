@@ -1,0 +1,71 @@
+
+@media screen and (max-width: 600px) {
+    .meme {
+        width: 95vw;
+        
+        .img-wrapper {
+            .meme-img {
+                width: 92vw;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .form-body {
+        .caption-input {
+            .input-element {
+                width: 98vw;
+                height: 7vh;
+            }
+        }
+    }
+    
+    
+}
+
+
+@media screen and (max-width: 600px) {
+    .user-input-space {
+        
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width:100vw;
+
+            .star-space {
+                width: 44%;
+                height: 7vh;
+        
+                .favorite-star{
+                    height: 50px;
+                    width: 50px;
+                    margin-right: 4px;
+                }
+    
+                .favorite {
+                    width: 98vw;
+                    height: 7vh;
+                    font-size: 30px;
+                }
+                
+            }
+            .submit-btn {
+                    width: 96vw;
+                    height: 5vh;
+            }
+        }
+        
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .form-body {
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
