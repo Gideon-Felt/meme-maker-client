@@ -1,8 +1,18 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+@import "./navigation.scss";
+@import "./meme.scss";
+@import "./meme-form.scss";
+
+body {
+    margin: 0px;
+    padding-top: 0px;
+}
+
 .app {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: $offwhite;
 }
-@import "./nav-bar.scss";
-@import "./meme.scss";

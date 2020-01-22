@@ -7,6 +7,9 @@ import { navigate } from "hookrouter"
 import "../../node_modules/react-dropzone-component/styles/filepicker.css"
 import "../../node_modules/dropzone/dist/min/dropzone.min.css"
 
+import favoriteStar from "../../static/assets/star.png"
+import blackStar from "../../static/assets/black.png"
+
 function MemeForm(props) {
     const [ text, setText ] = useState("")
     const [ favorite, setFavorite ] = useState(false)
@@ -106,14 +109,19 @@ function MemeForm(props) {
         }
     }
 
+    const handleFavoriteClick = () => {
+        setFavorite(!favorite)
+    }
+
     return (
         <div>
             {props.editMode ?
-            <h1> Edit Meme</h1>
+            <h1 className="form-mode"> Edit Meme</h1>
             :
-            <h1>Add a Meme</h1>
+            <h1 className="form-mode">Add a Meme</h1>
             }
             <form onSubmit={handleSubmit}>
+                <div className="drop-component">
                 <DropzoneComponent
                 ref={imageRef}
                 config={componentConfig()}
@@ -122,21 +130,21 @@ function MemeForm(props) {
                 >
                     Drop Yo' Meme Cuzzn
                 </DropzoneComponent>
+                </div>
                 <input
+                className="select-element"
                 type="text"
                 placeholder="Caption"
                 value={text}
                 onChange={e => setText(e.target.value)}
                 />
-                <div>
-                    <input
-                    type="checkbox"
-                    checked={favorite}
-                    onChange={() => setFavorite(!favorite)}
-                    />
-                    <span>Favorite?</span>
+                <div className="star-space">
+                    <div  onClick={() => handleFavoriteClick()}>
+                        {favorite ? <img className="favorite" style={{height: "25px", width: "25px"}} src={favoriteStar} alt="Favorite star missing"/> : <img className="favorite" style={{height: "25px", width: "25px"}} src={blackStar} alt="Favorite star missing"/>}
+                    </div>
+                    <span className="favorite">Favorite?</span>
                 </div>
-                <button type="submit">save meme</button>
+                <button className="submit-btn" type="submit">save meme</button>
             </form>
 
         </div>

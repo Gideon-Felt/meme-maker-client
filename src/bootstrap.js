@@ -15,13 +15,25 @@ const routes = {
 
 function Main() {
   return (
-    <div>
-      <div className="nav-bar">
-      <A href="/">Home</A>
-      <A href="/form">Form</A>
+    <div className="app-wrapper">
+      <div className="nav-bar-wrapper">
+        <div className="nav-links-wrapper">
+
+          <div className="nav-link-wrapper">
+            <A href="/">Home</A>
+          </div>
+
+          <div className="nav-link-wrapper">
+            <A href="/form">Form</A>
+          </div>
+
+        </div>
       </div>
-      {useRoutes(routes)}
-    </div>
+      <div>
+        {useRoutes(routes)}
+      </div>
+  </div>
+    
   )
 
 }
