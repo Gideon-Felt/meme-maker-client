@@ -13,6 +13,66 @@ function MemeForm(props) {
     const [ image, setImage ] = useState("")
     const imageRef = useRef(null)
 
+    const componentConfig = () => {
+        return {
+            iconFiletypes: [".jpg", ".png"],
+            showFiletypeIcon: true,
+            postUrl: "https://httpbin.org/post"
+        }
+    }
+
+    const djsConfig = () => {
+        return {
+            addRemoveLinks: true,
+            maxFiles: 1
+        }
+    }
+
+    const handleDrop = () => {
+        return {
+            addedfile: file => {
+                let upload = request
+                    .post("https://api.cloudinary.com/v1_1/gdfelt/image/upload")
+                    .field("upload_preset", "meme-images")
+                    .field("file", file)
+                upload.end((err, res) => {
+                    if (err) {
+                        console.log("Cloudinary error", err)
+                    }
+                    if (res.body.secure_url !== "") {
+                        setImage(res.body.secure_url)
+                    }
+                })
+            }
+        }
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        if (props.editMode) {
+            console.log("editMode enabled")
+        } else {
+            axios
+            .post("https://gdf-meme-api.herokuapp.com/add-meme", {
+                text,
+                image,
+                favorite
+            })
+            .then(() => {
+                setText("")
+                setImage("")
+                setFavorite(false)
+                imageRef.current.dropzone.removeAllFiles()
+            })
+            .then(() => {
+                console.log("added")
+            })
+            .catch(err => {
+                console.log("New Meme Submit Error: ", err)
+            })
+        }
+    }
+
     return (
         <div>
             {props.editMode ?
@@ -21,6 +81,14 @@ function MemeForm(props) {
             <h1>Add a Meme</h1>
             }
             <form>
+                <DropzoneComponent
+                ref={imageRef}
+                config={componentConfig()}
+                djsConfig={djsConfig()}
+                eventHandlers={handleDrop()}
+                >
+                    Drop Yo' Meme Cuzzn
+                </DropzoneComponent>
                 <input
                 type="text"
                 placeholder="Caption"
