@@ -3,10 +3,13 @@ import favoriteStar from "../../static/assets/star.png"
 
 function Meme(props) {
     const {id, text, favorite, image } = props.meme
+
+    
+
     return (
         <div className="meme">
             <div className="img-wrapper">
-                <img className="meme-img" src={image} alt="missing meme" />
+                <a href={image}><img className="meme-img" src={image} alt="missing meme"/></a>
             </div>
 
             <p className="text-description">{text}</p>
