@@ -29,7 +29,8 @@ function Main() {
 
         </div>
       </div>
-      <div>
+      <div className="spacer"/>
+      <div className="meme-space">
         {useRoutes(routes)}
       </div>
   </div>
