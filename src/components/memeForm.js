@@ -33,7 +33,7 @@ function MemeForm(props) {
 
     const componentConfig = () => {
         return {
-            iconFiletypes: [".jpg", ".png"],
+            iconFiletypes: [".jpg", ".png", ".gif"],
             showFiletypeIcon: true,
             postUrl: "https://httpbin.org/post"
         }
