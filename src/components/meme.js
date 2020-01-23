@@ -24,7 +24,7 @@ function Meme(props) {
                 </div>
 
                 <div className="detail-btn">
-                    <button className="btn" onClick={() => props.detailMeme(id)}>Share</button>
+                    <button className="share-btn" onClick={() => props.detailMeme(id)}>Share</button>
                 </div>
                 
             </div>
