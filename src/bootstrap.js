@@ -3,13 +3,15 @@ import ReactDOM from "react-dom";
 import {  useRoutes, A  } from "hookrouter"
 import App from "./components/app";
 import MemeForm from "./components/memeForm"
+import MemeDetail from "./components/meme-detail"
 
 import "./style/main.scss";
 
 const routes = {
   "/": () => <App />,
   "/form": () => <MemeForm />,
-  "/form/:id": ({ id }) => <MemeForm id={id} editMode={true} />
+  "/form/:id": ({ id }) => <MemeForm id={id} editMode={true} />,
+  "/meme/:id": ({ id }) => <MemeDetail id={id} />
 }
 
 

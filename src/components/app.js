@@ -26,6 +26,10 @@ function App()  {
     })
   }
 
+  const detailMeme = id => {
+    navigate(`/meme/${id}`);
+  }
+
   const editMeme = id => {
     navigate(`/form/${id}`);
   }
@@ -38,6 +42,7 @@ function App()  {
         meme={meme}
         deleteMeme={deleteMeme}
         editMeme={editMeme}
+        detailMeme={detailMeme}
         />
       )
     })

@@ -1,0 +1,33 @@
+.meme-detail-wrapper {
+    .clipboard-space {
+        .copy-clip-wrapper {
+            width: 100vw;
+                display: flex;
+                justify-content: center;
+            .copy-btn {
+                padding: 3px;
+                width: 130px;
+                outline: none;
+                background-color: grey;
+                color: white;
+                border: none;
+            
+                &:hover {
+                    background-color: #636363;
+                }
+            }
+
+        }
+        
+    }
+
+
+    .img-detail-wrapper {
+        margin-top: 6vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+}
